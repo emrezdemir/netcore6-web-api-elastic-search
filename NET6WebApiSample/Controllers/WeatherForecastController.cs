@@ -24,6 +24,17 @@ namespace elkTest.Controllers
             //logging
             _logger.LogInformation("Start", DateTime.UtcNow);
 
+
+            //exception logging
+            try
+            {
+                throw new Exception("Error Testing");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unknown - WeatherForecastController");
+            }
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
